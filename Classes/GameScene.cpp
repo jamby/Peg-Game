@@ -10,6 +10,16 @@
 
 USING_NS_CC;
 
+CCScene* m_pGameSceneSingleton = NULL;
+
+CCScene* GameScene::GetInstance()
+{
+    if(m_pGameSceneSingleton == NULL)
+        m_pGameSceneSingleton = GameScene::scene();
+	
+    return m_pGameSceneSingleton;
+}
+
 CCScene* GameScene::scene()
 {
 	// 'scene' is an autorelease object
@@ -58,33 +68,8 @@ bool GameScene::init()
 		//pMenu->setPosition( CCPointZero );
 		//this->addChild(pMenu, 1);
 		
-		/////////////////////////////
-		// 3. add your codes below...
-		
-		// add a label shows "Hello World"
-		// create and initialize a label
-		//CCLabelTTF* pLabel = CCLabelTTF::labelWithString("Hello World", "Thonburi", 34);
-		
 		// ask director the window size
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
-		
-		// position the label on the center of the screen
-		//pLabel->setPosition( ccp(size.width / 2, size.height - 20) );
-		
-		// add the label as a child to this layer
-		//this->addChild(pLabel, 1);
-		
-		// add "HelloWorld" splash screen"
-		//CCSprite* pSprite = new CCSprite;
-		//pSprite = spriteWithFile("Triangle01.png");
-		//pSprite->setPosition(ccp(0, 0));
-		//this->addChild(pSprite);
-		
-		// position the sprite on the center of the screen
-		//pSprite->setPosition( ccp(size.width/2, size.height/2) );
-		
-		// add the sprite as a child to this layer
-		//this->addChild(pSprite, 0);
 		
 		m_Gameboard = new Gameboard();
 		for(int i = 0; i < 14; i++)
@@ -107,4 +92,9 @@ bool GameScene::init()
 void GameScene::menuCloseCallback(CCObject* pSender)
 {
 	CCDirector::sharedDirector()->end();
+}
+
+void onExit()
+{
+	
 }

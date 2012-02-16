@@ -13,9 +13,11 @@
 #include "cocos2d.h"
 using namespace cocos2d;
 
-class MenuScene : public CCLayer
+class MenuScene : public CCLayerColor
 {
 public:
+	CCScene* GetInstance();
+	
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
 	virtual bool init();  
 	
