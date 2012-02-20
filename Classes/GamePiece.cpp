@@ -22,7 +22,7 @@ GamePiece::GamePiece(GameSpot* pSpot)
 	
 	// Set the top portion's collision with a point above the position and a radius
 	m_ccpTop = ccp(m_pSprite->getPosition().x, m_pSprite->getPosition().y + 88);
-	m_fRadius = 5.0f;
+	m_fRadius = 15.0f;
 	
 	this->addChild(m_pSprite);
 }

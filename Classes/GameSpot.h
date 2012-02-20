@@ -34,6 +34,7 @@ private:
 	
 	CCPoint m_ccpPegTip;
 	CCPoint m_ccpCirclePoint;
+	float fRadius;
 	
 	void SetSpotIndex(int nSpotIndex) { m_nSpotIndex = nSpotIndex; }
 	

@@ -21,6 +21,7 @@ private:
 	Gameboard* m_Gameboard;
 	vector<GamePiece*> m_vGamePieces;
 	vector<GamePiece*> m_vUsedPieces;
+	GamePiece* m_pSelectedPiece;
 //	b2World* m_b2World;
 	
 public:

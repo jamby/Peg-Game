@@ -7,6 +7,7 @@
 //
 
 #include "GameScene.h"
+#include "FPGMath.h"
 
 USING_NS_CC;
 
@@ -47,9 +48,9 @@ bool GameScene::init()
 	{
 		//////////////////////////////
 		// 1. super init first
-//		CC_BREAK_IF(!CCLayer::init());
-//		
-//		this->setIsTouchEnabled(true);
+		CC_BREAK_IF(!CCLayer::init());
+		
+		this->setIsTouchEnabled(true);
 //		
 //		/////////////////////////////
 //		// 2. add a menu item with "X" image, which is clicked to quit the program
@@ -101,9 +102,8 @@ void GameScene::onEnter()
 	{
 		//////////////////////////////
 		// 1. super init first
-		CC_BREAK_IF(!CCLayer::init());
+		//CC_BREAK_IF(!CCLayer::init());
 		
-		this->setIsTouchEnabled(true);
 		
 		/////////////////////////////
 		// 2. add a menu item with "X" image, which is clicked to quit the program
@@ -135,6 +135,8 @@ void GameScene::onEnter()
 		for(int i = 0; i < 6; i++)
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
 		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
+		
+		m_pSelectedPiece = NULL;
 		
 		this->schedule(schedule_selector(GameScene::update));
 		
@@ -170,16 +172,25 @@ void GameScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-	for(int i = 0; i < m_vGamePieces.size(); i++)
-	{
-		
-	}
+//	for(int i = 0; i < m_vGamePieces.size(); i++)
+//	{
+//		
+//	}
+	if(PointInCircle(location, m_vGamePieces[0]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
+		m_pSelectedPiece = m_vGamePieces[0];
 }
 
 void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
+	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
+	CCPoint location = touch->locationInView(touch->view());
+	location = CCDirector::sharedDirector()->convertToGL(location);
+	
+	if(m_pSelectedPiece != NULL)
+		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
 }
 
 void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
+	m_pSelectedPiece = NULL;
 }

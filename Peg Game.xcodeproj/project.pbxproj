@@ -313,6 +313,7 @@
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* Peg Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peg Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3B9A820EF2151B00286867 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
+		38994E0514F30C8600EFB560 /* FPGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPGMath.h; sourceTree = "<group>"; };
 		38C302D914EB1DEC00E24912 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		38C302DA14EB1DEC00E24912 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		38C302DB14EB1DEC00E24912 /* Gameboard.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Gameboard.cpp; sourceTree = "<group>"; };
@@ -706,6 +707,7 @@
 				38C302E014EB1DEC00E24912 /* GameScene.h */,
 				38C302E314EB1DEC00E24912 /* MenuScene.cpp */,
 				38C302E414EB1DEC00E24912 /* MenuScene.h */,
+				38994E0514F30C8600EFB560 /* FPGMath.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
