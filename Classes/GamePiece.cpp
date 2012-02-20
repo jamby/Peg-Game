@@ -19,45 +19,12 @@ GamePiece::GamePiece(GameSpot* pSpot)
 	m_pSprite->setAnchorPoint(ccp(.5, 0));
 	
 	m_pSprite->setPosition(m_gsCurrentSpot->GetPegTip());
-	this->addChild(m_pSprite);
-//	switch(m_gsCurrentSpot->GetSpotIndex())
-//	{
-//		case 1:
-//			m_pSprite->setPosition(ccp(160, 300));
-//			break;
-//		case 2:
-//			break;
-//		case 3:
-//			break;
-//		case 4:
-//			break;
-//		case 5:
-//			break;
-//		case 6:
-//			break;
-//		case 7:
-//			break;
-//		case 8:
-//			break;
-//		case 9:
-//			break;
-//		case 10:
-//			break;
-//		case 11:
-//			break;
-//		case 12:
-//			break;
-//		case 13:
-//			break;
-//		case 14:
-//			break;
-//		case 15:
-//			break;
-//		default:
-//			break;
-//	}
 	
-	//this->addChild(m_pSprite, m_gsCurrentSpot->GetZOrder());
+	// Set the top portion's collision with a point above the position and a radius
+	m_ccpTop = ccp(m_pSprite->getPosition().x, m_pSprite->getPosition().y + 88);
+	m_fRadius = 5.0f;
+	
+	this->addChild(m_pSprite);
 }
 
 GamePiece::~GamePiece(void)

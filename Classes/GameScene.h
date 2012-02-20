@@ -30,6 +30,11 @@ public:
 	virtual bool init();
 	virtual void onEnter();
 	virtual void onExit();
+	
+	void update(ccTime dt);
+	void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
+	void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
+	void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
 
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	static cocos2d::CCScene* scene();

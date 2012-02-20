@@ -136,6 +136,7 @@ void GameScene::onEnter()
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
 		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
+		this->schedule(schedule_selector(GameScene::update));
 		
 		bRet = true;
 	} while(0);
@@ -155,4 +156,30 @@ void GameScene::onExit()
 	m_vGamePieces.clear();
 	
 	delete m_Gameboard;
+}
+
+void GameScene::update(ccTime dt)
+{
+	
+}
+
+void GameScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+{
+	// Choose one of the touches to work with.
+	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
+	CCPoint location = touch->locationInView(touch->view());
+	location = CCDirector::sharedDirector()->convertToGL(location);
+	
+	for(int i = 0; i < m_vGamePieces.size(); i++)
+	{
+		
+	}
+}
+
+void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
+{
+}
+
+void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+{
 }

@@ -31,6 +31,9 @@ private:
 	GameSpot* m_gsPreviousSpot;
 	CCSprite* m_pSprite;
 	
+	CCPoint m_ccpTop;
+	float m_fRadius;
+	
 public:
 	GamePiece(GameSpot* pSpot);
 	~GamePiece(void);
@@ -42,6 +45,10 @@ public:
 	int GetCurrentSpotNumber(void) { return m_gsCurrentSpot->GetSpotIndex(); }
 	void SetCurrentSpot(GameSpot* gsCurrentSpot) { m_gsCurrentSpot = gsCurrentSpot; }
 	CCSprite* GetSprite(void) { return m_pSprite; }
+	
+	void SetTopPoint(CCPoint ccpTop) { m_ccpTop = ccpTop; }
+	CCPoint GetTopPoint(void) { return m_ccpTop; }
+	float GetRadius(void) { return m_fRadius; }
 };
 
 #endif // __GAMEPIECE_H_
