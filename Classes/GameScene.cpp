@@ -47,6 +47,60 @@ bool GameScene::init()
 	{
 		//////////////////////////////
 		// 1. super init first
+//		CC_BREAK_IF(!CCLayer::init());
+//		
+//		this->setIsTouchEnabled(true);
+//		
+//		/////////////////////////////
+//		// 2. add a menu item with "X" image, which is clicked to quit the program
+//		//    you may modify it.
+//		
+//		// add a "close" icon to exit the progress. it's an autorelease object
+//		//CCMenuItemImage *pCloseItem = CCMenuItemImage::itemFromNormalImage(
+//		//										"CloseNormal.png",
+//		//										"CloseSelected.png",
+//		//										this,
+//		//										menu_selector(HelloWorld::menuCloseCallback) );
+//		//	pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
+//		
+//		// create menu, it's an autorelease object
+//		//CCMenu* pMenu = CCMenu::menuWithItems(pCloseItem, NULL);
+//		//pMenu->setPosition( CCPointZero );
+//		//this->addChild(pMenu, 1);
+//		
+//		// ask director the window size
+//		CCSize size = CCDirector::sharedDirector()->getWinSize();
+//		
+//		m_Gameboard = new Gameboard();
+//		for(int i = 0; i < 14; i++)
+//			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(i)));
+//		//ccDrawCircle(ccp(50, 50), 1.0f, 0.0f, 6, false);
+//		
+//		this->addChild(m_Gameboard);
+//
+//		for(int i = 0; i < 6; i++)
+//			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
+//		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
+//		
+//
+		bRet = true;
+	} while(0);
+	
+	return bRet;
+}
+
+void GameScene::menuCloseCallback(CCObject* pSender)
+{
+	CCDirector::sharedDirector()->end();
+}
+
+void GameScene::onEnter()
+{
+	bool bRet = false;
+	do
+	{
+		//////////////////////////////
+		// 1. super init first
 		CC_BREAK_IF(!CCLayer::init());
 		
 		this->setIsTouchEnabled(true);
@@ -77,24 +131,28 @@ bool GameScene::init()
 		//ccDrawCircle(ccp(50, 50), 1.0f, 0.0f, 6, false);
 		
 		this->addChild(m_Gameboard);
-
+		
 		for(int i = 0; i < 6; i++)
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
 		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
-
+		
 		bRet = true;
 	} while(0);
-	
-	return bRet;
 }
 
-void GameScene::menuCloseCallback(CCObject* pSender)
+void GameScene::onExit()
 {
-	CCDirector::sharedDirector()->end();
-}
-
-void onExit()
-{
+	this->removeAllChildrenWithCleanup(true);
 	
+	for(int i = 0; i < 10; i++)
+	{
+		GamePiece* tempPiece = m_vGamePieces.back();
+		m_vGamePieces.pop_back();
+		delete tempPiece;
+	}
+	
+	m_vGamePieces.clear();
+	
+	delete m_Gameboard;
 }
