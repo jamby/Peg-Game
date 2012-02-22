@@ -16,7 +16,7 @@ GameSpot::GameSpot(int nSpotIndex)
 	m_vJumpSpots.clear();
 	m_vAdjacentSpots.clear();
 	m_nZOrder = -1;
-	fRadius = 6.0f;
+	m_fRadius = 6.0f;
 	
 	switch(m_nSpotIndex)
 	{

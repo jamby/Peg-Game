@@ -16,11 +16,11 @@ float Lerp(float fStart, float fEnd, float fPercent)
 
 bool PointInCircle(CCPoint ccpPoint, CCPoint ccpCircleCenter, float fRadius)
 {
-	float distance = sqrt((ccpPoint.x - ccpCircleCenter.x) * (ccpPoint.x - ccpCircleCenter.x) + 
+	float fDistance = sqrt((ccpPoint.x - ccpCircleCenter.x) * (ccpPoint.x - ccpCircleCenter.x) + 
 						  (ccpPoint.y - ccpCircleCenter.y) * (ccpPoint.y - ccpCircleCenter.y));
 	
-	if(distance > fRadius)
-		return false;
-	else
+	if(fRadius >= fDistance )
 		return true;
+	else
+		return false;
 }

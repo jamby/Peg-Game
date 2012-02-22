@@ -34,7 +34,7 @@ private:
 	
 	CCPoint m_ccpPegTip;
 	CCPoint m_ccpCirclePoint;
-	float fRadius;
+	float m_fRadius;
 	
 	void SetSpotIndex(int nSpotIndex) { m_nSpotIndex = nSpotIndex; }
 	
@@ -55,6 +55,8 @@ public:
 	GameSpot* GetSpecificJumpSpot(int nSpot);
 	
 	CCPoint GetPegTip(void) { return m_ccpPegTip; }
+	CCPoint GetCirclePoint(void) { return m_ccpCirclePoint; }
+	float GetRadius(void) { return m_fRadius; }
 };
 
 #endif // __GAMESPOT_H_

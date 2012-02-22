@@ -83,6 +83,8 @@ void Gameboard::init(void)
 	m_vSpots[3]->AddJumpSpot(m_vSpots[10]);
 	m_vSpots[3]->AddJumpSpot(m_vSpots[12]);
 	
+	m_vSpots[3]->SetZOrder(5);
+	
 	//////////////////
 	// Spot 5 ([4])
 	//////////////////
@@ -93,6 +95,8 @@ void Gameboard::init(void)
 	// Jump Spots
 	m_vSpots[4]->AddJumpSpot(m_vSpots[11]);
 	m_vSpots[4]->AddJumpSpot(m_vSpots[13]);
+	
+	m_vSpots[4]->SetZOrder(5);
 	
 	//////////////////
 	// Spot 6 ([5])
@@ -109,6 +113,8 @@ void Gameboard::init(void)
 	m_vSpots[5]->AddJumpSpot(m_vSpots[12]);
 	m_vSpots[5]->AddJumpSpot(m_vSpots[14]);
 	
+	m_vSpots[5]->SetZOrder(5);
+	
 	//////////////////
 	// Spot 7 ([6])
 	//////////////////
@@ -119,6 +125,8 @@ void Gameboard::init(void)
 	// Jump Spots
 	m_vSpots[6]->AddJumpSpot(m_vSpots[1]);
 	m_vSpots[6]->AddJumpSpot(m_vSpots[8]);
+	
+	m_vSpots[6]->SetZOrder(7);
 	
 	//////////////////
 	// Spot 8 ([7])
@@ -131,6 +139,8 @@ void Gameboard::init(void)
 	m_vSpots[7]->AddAdjacentSpot(m_vSpots[2]);
 	m_vSpots[7]->AddAdjacentSpot(m_vSpots[9]);
 	
+	m_vSpots[7]->SetZOrder(7);
+	
 	//////////////////
 	// Spot 9 ([8])
 	//////////////////
@@ -141,6 +151,8 @@ void Gameboard::init(void)
 	// Jump Spots
 	m_vSpots[8]->AddJumpSpot(m_vSpots[1]);
 	m_vSpots[8]->AddJumpSpot(m_vSpots[6]);
+	
+	m_vSpots[8]->SetZOrder(7);
 	
 	//////////////////
 	// Spot 10 ([9])
@@ -153,6 +165,8 @@ void Gameboard::init(void)
 	m_vSpots[9]->AddJumpSpot(m_vSpots[2]);
 	m_vSpots[9]->AddJumpSpot(m_vSpots[7]);
 	
+	m_vSpots[9]->SetZOrder(7);
+	
 	//////////////////
 	// Spot 11 ([10])
 	//////////////////
@@ -164,6 +178,8 @@ void Gameboard::init(void)
 	m_vSpots[10]->AddJumpSpot(m_vSpots[3]);
 	m_vSpots[10]->AddJumpSpot(m_vSpots[12]);
 	
+	m_vSpots[10]->SetZOrder(9);
+	
 	//////////////////
 	// Spot 12 ([11])
 	//////////////////
@@ -174,6 +190,8 @@ void Gameboard::init(void)
 	// Jump Spots
 	m_vSpots[11]->AddJumpSpot(m_vSpots[4]);
 	m_vSpots[11]->AddJumpSpot(m_vSpots[13]);
+	
+	m_vSpots[11]->SetZOrder(9);
 	
 	//////////////////
 	// Spot 13 ([12])
@@ -190,6 +208,8 @@ void Gameboard::init(void)
 	m_vSpots[12]->AddJumpSpot(m_vSpots[10]);
 	m_vSpots[12]->AddJumpSpot(m_vSpots[14]);
 	
+	m_vSpots[12]->SetZOrder(9);
+	
 	//////////////////
 	// Spot 14 ([13])
 	//////////////////
@@ -201,6 +221,8 @@ void Gameboard::init(void)
 	m_vSpots[13]->AddJumpSpot(m_vSpots[4]);
 	m_vSpots[13]->AddJumpSpot(m_vSpots[11]);
 	
+	m_vSpots[13]->SetZOrder(9);
+	
 	//////////////////
 	// Spot 15 ([14])
 	//////////////////
@@ -211,6 +233,8 @@ void Gameboard::init(void)
 	// Jump Spots
 	m_vSpots[14]->AddJumpSpot(m_vSpots[5]);
 	m_vSpots[14]->AddJumpSpot(m_vSpots[12]);
+	
+	m_vSpots[14]->SetZOrder(9);
 	
 //	m_vSprites[0] = CCSprite::spriteWithFile("Icon.png");
 //	m_vSprites[1] = CCSprite::spriteWithFile("Triangle01.png");

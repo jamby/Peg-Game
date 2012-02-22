@@ -30,6 +30,7 @@ private:
 	GameSpot* m_gsCurrentSpot;
 	GameSpot* m_gsPreviousSpot;
 	CCSprite* m_pSprite;
+	int m_nZOrder;
 	
 	CCPoint m_ccpTop;
 	float m_fRadius;
@@ -49,6 +50,9 @@ public:
 	void SetTopPoint(CCPoint ccpTop) { m_ccpTop = ccpTop; }
 	CCPoint GetTopPoint(void) { return m_ccpTop; }
 	float GetRadius(void) { return m_fRadius; }
+	
+	void SetZOrder(int nZOrder) { m_nZOrder = nZOrder; }
+	int GetZOrder(void) { return m_nZOrder; }
 };
 
 #endif // __GAMEPIECE_H_

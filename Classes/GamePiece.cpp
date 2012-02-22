@@ -12,16 +12,18 @@
 GamePiece::GamePiece(GameSpot* pSpot)
 {
 	SetCurrentSpot(pSpot);
+	SetZOrder(pSpot->GetZOrder());
+	
 	m_gsPreviousSpot = NULL;
 	m_bIsPlayable = true;
 	m_bIsChosen = false;
 	m_pSprite = CCSprite::spriteWithFile("PegBlue.png");
 	m_pSprite->setAnchorPoint(ccp(.5, 0));
 	
-	m_pSprite->setPosition(m_gsCurrentSpot->GetPegTip());
+	setPosition(m_gsCurrentSpot->GetPegTip());
 	
 	// Set the top portion's collision with a point above the position and a radius
-	m_ccpTop = ccp(m_pSprite->getPosition().x, m_pSprite->getPosition().y + 88);
+	m_ccpTop = ccp(getPosition().x, getPosition().y + 88);
 	m_fRadius = 15.0f;
 	
 	this->addChild(m_pSprite);

@@ -51,39 +51,7 @@ bool GameScene::init()
 		CC_BREAK_IF(!CCLayer::init());
 		
 		this->setIsTouchEnabled(true);
-//		
-//		/////////////////////////////
-//		// 2. add a menu item with "X" image, which is clicked to quit the program
-//		//    you may modify it.
-//		
-//		// add a "close" icon to exit the progress. it's an autorelease object
-//		//CCMenuItemImage *pCloseItem = CCMenuItemImage::itemFromNormalImage(
-//		//										"CloseNormal.png",
-//		//										"CloseSelected.png",
-//		//										this,
-//		//										menu_selector(HelloWorld::menuCloseCallback) );
-//		//	pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
-//		
-//		// create menu, it's an autorelease object
-//		//CCMenu* pMenu = CCMenu::menuWithItems(pCloseItem, NULL);
-//		//pMenu->setPosition( CCPointZero );
-//		//this->addChild(pMenu, 1);
-//		
-//		// ask director the window size
-//		CCSize size = CCDirector::sharedDirector()->getWinSize();
-//		
-//		m_Gameboard = new Gameboard();
-//		for(int i = 0; i < 14; i++)
-//			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(i)));
-//		//ccDrawCircle(ccp(50, 50), 1.0f, 0.0f, 6, false);
-//		
-//		this->addChild(m_Gameboard);
-//
-//		for(int i = 0; i < 6; i++)
-//			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
-//		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
-//		
-//
+
 		bRet = true;
 	} while(0);
 	
@@ -104,6 +72,7 @@ void GameScene::onEnter()
 		// 1. super init first
 		//CC_BREAK_IF(!CCLayer::init());
 		
+		CCLayer::onEnter();
 		
 		/////////////////////////////
 		// 2. add a menu item with "X" image, which is clicked to quit the program
@@ -158,6 +127,8 @@ void GameScene::onExit()
 	m_vGamePieces.clear();
 	
 	delete m_Gameboard;
+	
+	CCLayer::onExit();
 }
 
 void GameScene::update(ccTime dt)
@@ -187,10 +158,38 @@ void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
 	if(m_pSelectedPiece != NULL)
+	{
 		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
+	
+		this->reorderChild(m_pSelectedPiece, 11);
+	}
 }
 
 void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
+	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
+	CCPoint location = touch->locationInView(touch->view());
+	location = CCDirector::sharedDirector()->convertToGL(location);
+	
+	if(m_pSelectedPiece != NULL)
+	{
+		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
+		
+		for(int i = 0; i < 15; i++)
+		{
+			if(PointInCircle(m_pSelectedPiece->getPosition(), m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
+			{
+				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
+				{
+					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
+					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+				}
+			}		
+		}
+		
+		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
+	}
+	
 	m_pSelectedPiece = NULL;
 }
