@@ -216,7 +216,7 @@
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>38B8EF7F14F48C5F0070DE03</string>
+						<string>38B8EF8714F48EF50070DE03</string>
 						<key>history</key>
 						<array>
 							<string>386C69F714F312AD00D80FFC</string>
@@ -315,8 +315,9 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>31</integer>
-									<integer>30</integer>
+									<integer>14</integer>
+									<integer>4</integer>
+									<integer>0</integer>
 								</array>
 							</array>
 							<key>PBXSmartGroupTreeModuleOutlineStateVisibleRectKey</key>
@@ -369,7 +370,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38B8EF7E14F48C5F0070DE03</string>
+										<string>38B8EF8614F48EF50070DE03</string>
 										<key>history</key>
 										<array>
 											<string>38C3031514EB20F000E24912</string>
@@ -395,7 +396,7 @@
 											<string>38B8EF5014F489AE0070DE03</string>
 											<string>38B8EF7014F48BFE0070DE03</string>
 											<string>38B8EF7114F48BFE0070DE03</string>
-											<string>38B8EF7214F48BFE0070DE03</string>
+											<string>38B8EF8514F48EF50070DE03</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -407,14 +408,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {833, 631}}</string>
+								<string>{{0, 0}, {833, 698}}</string>
 								<key>RubberWindowFrame</key>
 								<string>739 210 1041 877 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>631pt</string>
+							<string>698pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -427,14 +428,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 635}, {833, 201}}</string>
+								<string>{{0, 703}, {833, 134}}</string>
 								<key>RubberWindowFrame</key>
 								<string>739 210 1041 877 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>201pt</string>
+							<string>134pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -593,7 +594,7 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>38B8EF8014F48C5F0070DE03</string>
+		<string>38B8EF8814F48EF50070DE03</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>38B8EE3D14F313920070DE03</string>
 		<string>38B8EE3E14F313920070DE03</string>

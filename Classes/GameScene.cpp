@@ -160,20 +160,6 @@ void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	if(m_pSelectedPiece != NULL)
 	{
 		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
-	
-		this->reorderChild(m_pSelectedPiece, 11);
-	}
-}
-
-void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
-{
-	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
-	CCPoint location = touch->locationInView(touch->view());
-	location = CCDirector::sharedDirector()->convertToGL(location);
-	
-	if(m_pSelectedPiece != NULL)
-	{
-		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
 		
 		for(int i = 0; i < 15; i++)
 		{
@@ -190,6 +176,33 @@ void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 		
 		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
 	}
+}
+
+void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+{
+	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
+	CCPoint location = touch->locationInView(touch->view());
+	location = CCDirector::sharedDirector()->convertToGL(location);
+	
+//	if(m_pSelectedPiece != NULL)
+//	{
+//		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
+//		
+//		for(int i = 0; i < 15; i++)
+//		{
+//			if(PointInCircle(m_pSelectedPiece->getPosition(), m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
+//			{
+//				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
+//				{
+//					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
+//					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+//					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+//				}
+//			}		
+//		}
+//		
+//		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
+//	}
 	
 	m_pSelectedPiece = NULL;
 }
