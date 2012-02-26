@@ -11,33 +11,47 @@
 
 USING_NS_CC;
 
-CCScene* m_pGameSceneSingleton = NULL;
+static GameScene *pGameSceneSingleton = NULL;
+static GameLayer *pGameLayerSingleton = NULL;
 
-CCScene* GameScene::GetInstance()
+GameScene* GameScene::GetSceneInstance()
 {
-    if(m_pGameSceneSingleton == NULL)
-        m_pGameSceneSingleton = GameScene::scene();
+    if(pGameSceneSingleton == NULL)
+	{
+        pGameSceneSingleton = GameScene::node();
+		
+		// add layer as a child to scene
+		pGameSceneSingleton->addChild(GameScene::GetLayerInstance(), 0, 1);
+	}
 	
-    return m_pGameSceneSingleton;
+    return pGameSceneSingleton;
 }
 
-CCScene* GameScene::scene()
+GameLayer* GameScene::GetLayerInstance()
 {
-	// 'scene' is an autorelease object
-	CCScene *scene = CCScene::node();
+	if(pGameLayerSingleton == NULL)
+		pGameLayerSingleton = GameLayer::node();
 	
-	// 'layer' is an autorelease object
-	GameScene *layer = GameScene::node();
-
-	// add layer as a child to scene
-	scene->addChild(layer);
-
-	// return the scene
-	return scene;
+	return pGameLayerSingleton;
 }
+
+//CCScene* GameScene::scene()
+//{
+//	// 'scene' is an autorelease object
+//	GameScene *scene = GameScene::node();
+//	
+//	// 'layer' is an autorelease object
+//	m_pGameLayerSingleton = GameLayer::node();
+//
+//	// add layer as a child to scene
+//	scene->addChild(layer, 0, 1);
+//
+//	// return the scene
+//	return scene;
+//}
 
 // on "init" you need to initialize your instance
-bool GameScene::init()
+bool GameLayer::init()
 {
 	if(!CCLayerColor::initWithColor(ccc4(0, 0, 255, 255)))
 		return false;
@@ -58,12 +72,12 @@ bool GameScene::init()
 	return bRet;
 }
 
-void GameScene::menuCloseCallback(CCObject* pSender)
+void GameLayer::menuCloseCallback(CCObject* pSender)
 {
 	CCDirector::sharedDirector()->end();
 }
 
-void GameScene::onEnter()
+void GameLayer::onEnter()
 {
 	bool bRet = false;
 	do
@@ -106,6 +120,7 @@ void GameScene::onEnter()
 		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
 		m_pSelectedPiece = NULL;
+		m_pNewSpot = NULL;
 		
 		this->schedule(schedule_selector(GameScene::update));
 		
@@ -113,7 +128,7 @@ void GameScene::onEnter()
 	} while(0);
 }
 
-void GameScene::onExit()
+void GameLayer::onExit()
 {
 	this->removeAllChildrenWithCleanup(true);
 	
@@ -131,12 +146,12 @@ void GameScene::onExit()
 	CCLayer::onExit();
 }
 
-void GameScene::update(ccTime dt)
+void GameLayer::update(ccTime dt)
 {
 	
 }
 
-void GameScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
+void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 {
 	// Choose one of the touches to work with.
 	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
@@ -151,7 +166,7 @@ void GameScene::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 		m_pSelectedPiece = m_vGamePieces[0];
 }
 
-void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
+void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 {
 	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
 	CCPoint location = touch->locationInView(touch->view());
@@ -161,48 +176,39 @@ void GameScene::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	{
 		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
 		
-		for(int i = 0; i < 15; i++)
+		for(int i = 0; i < m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots().size(); i++)
 		{
-			if(PointInCircle(m_pSelectedPiece->getPosition(), m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
+			if(PointInCircle(m_pSelectedPiece->getPosition(), 
+							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetCirclePoint(), 
+							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetRadius()) == true)
 			{
+				// Need to change this to be from the selected piece's jump spots
+				// However, more of this will have to do with the ending gameplay for this
+				// Like this, the part of code that is commented below
+				// The uncommented code would be the one that should be moved into the TouchesEnded function
+//				if(m_pSelectedPiece->GetCurrentSpot()->CheckConnectors(i) == true)
+//					m_pNewSpot = m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i];
 				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
 				{
 					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
 					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
 					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
 				}
-			}		
+			}
+			else
+				m_pNewSpot = NULL;
 		}
 		
 		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
 	}
 }
 
-void GameScene::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
+void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 {
 	CCTouch* touch = (CCTouch*)(pTouches->anyObject());
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-//	if(m_pSelectedPiece != NULL)
-//	{
-//		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
-//		
-//		for(int i = 0; i < 15; i++)
-//		{
-//			if(PointInCircle(m_pSelectedPiece->getPosition(), m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
-//			{
-//				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
-//				{
-//					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
-//					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-//					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-//				}
-//			}		
-//		}
-//		
-//		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
-//	}
 	
 	m_pSelectedPiece = NULL;
 }

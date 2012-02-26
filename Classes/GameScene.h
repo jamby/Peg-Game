@@ -15,18 +15,20 @@ using namespace cocos2d;
 #include "GamePiece.h"
 //#include "Box2D.h"
 
-class GameScene : public CCLayerColor
+class GameScene;
+
+class GameLayer : public CCLayerColor
 {
 private:
 	Gameboard* m_Gameboard;
 	vector<GamePiece*> m_vGamePieces;
 	vector<GamePiece*> m_vUsedPieces;
 	GamePiece* m_pSelectedPiece;
-//	b2World* m_b2World;
+	GameSpot* m_pNewSpot;
+	
+	//	b2World* m_b2World;
 	
 public:
-	static CCScene* GetInstance();
-	
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone
 	virtual bool init();
 	virtual void onEnter();
@@ -36,15 +38,29 @@ public:
 	void ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent);
 	void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 	void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
-
+	
+	GameSpot* GetNewSpot(void) { return m_pNewSpot; }
+	void SetNewSpot(GameSpot* newSpot) { m_pNewSpot = newSpot; }
+	
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
-	static cocos2d::CCScene* scene();
 	
 	// a selector callback
 	virtual void menuCloseCallback(CCObject* pSender);
+	
+	GamePiece* GetSelectedPiece(void) { return m_pSelectedPiece; }
+	
+	LAYER_NODE_FUNC(GameLayer);
+};
 
-	// implement the "static node()" method manually
-	LAYER_NODE_FUNC(GameScene);
+class GameScene : public CCScene
+{
+private:
+	
+public:
+	static GameScene* GetSceneInstance();
+	static GameLayer* GetLayerInstance();
+	
+	SCENE_NODE_FUNC(GameScene);
 };
 
 #endif // __MENU_SCENE_H__

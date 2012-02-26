@@ -202,24 +202,24 @@
 			<key>Content</key>
 			<dict>
 				<key>PBXProjectModuleGUID</key>
-				<string>38994D9914EB857E00EFB560</string>
+				<string>38B8F06614F9D09D0070DE03</string>
 				<key>PBXProjectModuleLabel</key>
-				<string>CCLayer.h</string>
+				<string>GamePiece.cpp</string>
 				<key>PBXSplitModuleInNavigatorKey</key>
 				<dict>
 					<key>Split0</key>
 					<dict>
 						<key>PBXProjectModuleGUID</key>
-						<string>38994D9A14EB857E00EFB560</string>
+						<string>38B8F06714F9D09D0070DE03</string>
 						<key>PBXProjectModuleLabel</key>
-						<string>CCLayer.h</string>
+						<string>GamePiece.cpp</string>
 						<key>_historyCapacity</key>
 						<integer>0</integer>
 						<key>bookmark</key>
-						<string>38B8EF8714F48EF50070DE03</string>
+						<string>38B8F07C14F9D1960070DE03</string>
 						<key>history</key>
 						<array>
-							<string>386C69F714F312AD00D80FFC</string>
+							<string>38B8F06214F9D0950070DE03</string>
 						</array>
 					</dict>
 					<key>SplitCount</key>
@@ -235,7 +235,7 @@
 				<key>PBXModuleWindowStatusBarHidden2</key>
 				<false/>
 				<key>RubberWindowFrame</key>
-				<string>61 229 1119 902 0 0 1920 1178 </string>
+				<string>15 271 1119 902 0 0 1920 1178 </string>
 			</dict>
 		</dict>
 	</array>
@@ -315,7 +315,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>14</integer>
+									<integer>10</integer>
+									<integer>5</integer>
 									<integer>4</integer>
 									<integer>0</integer>
 								</array>
@@ -358,7 +359,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameScene.cpp</string>
+								<string>GamePiece.cpp</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -366,37 +367,39 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>GameScene.cpp</string>
+										<string>GamePiece.cpp</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>38B8EF8614F48EF50070DE03</string>
+										<string>38B8F07B14F9D1960070DE03</string>
 										<key>history</key>
 										<array>
 											<string>38C3031514EB20F000E24912</string>
 											<string>38C3031614EB20F000E24912</string>
 											<string>38C3031714EB20F000E24912</string>
 											<string>38C3031914EB20F000E24912</string>
-											<string>38994D4D14EB3A2C00EFB560</string>
-											<string>38994D8F14EB857E00EFB560</string>
-											<string>38994D9114EB857E00EFB560</string>
 											<string>38994DCD14F1EF0A00EFB560</string>
-											<string>38994DEA14F1F4F200EFB560</string>
-											<string>38B8EE4B14F3158E0070DE03</string>
 											<string>38B8EE4C14F3158E0070DE03</string>
 											<string>38B8EE4D14F3158E0070DE03</string>
 											<string>38B8EE5614F366FC0070DE03</string>
 											<string>38B8EE6714F367DF0070DE03</string>
-											<string>38B8EE7514F368330070DE03</string>
 											<string>38B8EEB114F480270070DE03</string>
 											<string>38B8EF2214F484520070DE03</string>
-											<string>38B8EF4B14F489AE0070DE03</string>
-											<string>38B8EF4D14F489AE0070DE03</string>
-											<string>38B8EF4F14F489AE0070DE03</string>
-											<string>38B8EF5014F489AE0070DE03</string>
-											<string>38B8EF7014F48BFE0070DE03</string>
-											<string>38B8EF7114F48BFE0070DE03</string>
-											<string>38B8EF8514F48EF50070DE03</string>
+											<string>38B8EF9914F5B7590070DE03</string>
+											<string>38B8EFAA14F6F8B40070DE03</string>
+											<string>38B8EFAB14F6F8B40070DE03</string>
+											<string>38B8EFC714F9C5A60070DE03</string>
+											<string>38B8EFCA14F9C5A60070DE03</string>
+											<string>38B8EFE714F9C91F0070DE03</string>
+											<string>38B8EFE814F9C91F0070DE03</string>
+											<string>38B8EFE914F9C91F0070DE03</string>
+											<string>38B8F02114F9CCD10070DE03</string>
+											<string>38B8F02214F9CCD10070DE03</string>
+											<string>38B8F03B14F9CE8E0070DE03</string>
+											<string>38B8F06F14F9D0F40070DE03</string>
+											<string>38B8F07114F9D0F40070DE03</string>
+											<string>38B8F07914F9D1960070DE03</string>
+											<string>38B8F07A14F9D1960070DE03</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -408,14 +411,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {833, 698}}</string>
+								<string>{{0, 0}, {833, 699}}</string>
 								<key>RubberWindowFrame</key>
 								<string>739 210 1041 877 0 0 1920 1178 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>698pt</string>
+							<string>699pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -594,14 +597,14 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>38B8EF8814F48EF50070DE03</string>
+		<string>38B8F07D14F9D1960070DE03</string>
 		<string>1C530D57069F1CE1000CFCEE</string>
 		<string>38B8EE3D14F313920070DE03</string>
 		<string>38B8EE3E14F313920070DE03</string>
 		<string>1C78EAAD065D492600B07095</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>38C302D414EB1D9D00E24912</string>
-		<string>38994D9914EB857E00EFB560</string>
+		<string>38B8F06614F9D09D0070DE03</string>
 		<string>/Users/jamby/Desktop/Peg-Game/Peg Game.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
@@ -626,7 +629,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>GameScene.cpp</string>
+								<string>GamePiece.h</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>

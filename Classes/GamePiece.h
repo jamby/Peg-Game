@@ -14,12 +14,7 @@
 using namespace cocos2d;
 #include "GameSpot.h"
 
-enum eCOLORS
-{
-	ecRED = 0,
-	ecWHITE,
-	ecBLUE
-};
+class GameLayer;
 
 class GamePiece : public CCNode
 {
@@ -34,6 +29,9 @@ private:
 	
 	CCPoint m_ccpTop;
 	float m_fRadius;
+	
+	GameLayer* m_pGameLayer;
+
 	
 public:
 	GamePiece(GameSpot* pSpot);

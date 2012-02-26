@@ -8,6 +8,7 @@
  */
 
 #include "GamePiece.h"
+#include "GameScene.h"
 
 GamePiece::GamePiece(GameSpot* pSpot)
 {
@@ -27,6 +28,7 @@ GamePiece::GamePiece(GameSpot* pSpot)
 	m_fRadius = 15.0f;
 	
 	this->addChild(m_pSprite);
+	m_pGameLayer = GameScene::GetLayerInstance();
 }
 
 GamePiece::~GamePiece(void)
@@ -42,15 +44,15 @@ bool GamePiece::CanJump(void)
 void GamePiece::JumpToSpot(int nSpot)
 {
 	int nCurrentSpotIndex = m_gsCurrentSpot->GetSpotIndex();
-	vector<int> vJumpSpots = m_gsCurrentSpot->GetJumpSpots();
-	int i = 0;
-	for(; i < vJumpSpots.size(); i++)
-	{
-		//if(nSpot == vJumpSpots[i]->GetSpotIndex())
-		//{
-		//m_gsCurrentSpot = vGameSpots[nSpot];
-		//}
-	}
+//	vector<int> vJumpSpots = m_gsCurrentSpot->GetJumpSpots();
+//	int i = 0;
+//	for(; i < vJumpSpots.size(); i++)
+//	{
+//		//if(nSpot == vJumpSpots[i]->GetSpotIndex())
+//		//{
+//		//m_gsCurrentSpot = vGameSpots[nSpot];
+//		//}
+//	}
 	
 	if(nCurrentSpotIndex == m_gsCurrentSpot->GetSpotIndex())
 		m_gsCurrentSpot = NULL;

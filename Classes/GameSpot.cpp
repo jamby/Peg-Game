@@ -91,27 +91,21 @@ GameSpot::~GameSpot(void)
 	m_vAdjacentSpots.clear();
 }
 
-int GameSpot::CheckConnectors(int nSubscript)
+bool GameSpot::CheckConnectors(int nSubscript)
 {
 	if(m_vAdjacentSpots[nSubscript] == NULL && m_vJumpSpots[nSubscript] == NULL)
-		return eBOTH_SPOTS_EMPTY;
+		return false;
 	else if(m_vAdjacentSpots[nSubscript] && m_vJumpSpots[nSubscript] == NULL)
-		return eADJACENT_SPOT_TAKEN;
+		return true;
 	else if(m_vJumpSpots[nSubscript] && m_vAdjacentSpots[nSubscript] == NULL)
-		return eJUMP_SPOT_TAKEN;
+		return false;
 	else
-		return eBOTH_SPOTS_TAKEN;
+		return false;
 }
 
-vector<int> GameSpot::GetAdjacentSpots(void)
-{
-	vector<int> vTemporaryAdjacentSpots;
-	for(int i = 0; i < m_vAdjacentSpots.size(); i++)
-	{
-		vTemporaryAdjacentSpots.push_back(m_vAdjacentSpots[i]->GetSpotIndex());
-	}
-	
-	return vTemporaryAdjacentSpots;
+vector<GameSpot*> GameSpot::GetAdjacentSpots(void)
+{	
+	return m_vAdjacentSpots;
 }
 
 GameSpot* GameSpot::GetSpecificAdjacentSpot(int nSpot)
@@ -136,15 +130,9 @@ GameSpot* GameSpot::GetSpecificAdjacentSpot(int nSpot)
 	
 }
 
-vector<int> GameSpot::GetJumpSpots(void)
+vector<GameSpot*> GameSpot::GetJumpSpots(void)
 {
-	vector<int> vTemporaryJumpSpots;
-	for(int i = 0; i < m_vJumpSpots.size(); i++)
-	{
-		vTemporaryJumpSpots.push_back(m_vJumpSpots[i]->GetSpotIndex());
-	}
-	
-	return vTemporaryJumpSpots;
+	return m_vJumpSpots;
 }
 
 GameSpot* GameSpot::GetSpecificJumpSpot(int nSpot)

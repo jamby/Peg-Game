@@ -48,10 +48,10 @@ public:
 	int GetZOrder(void) { return m_nZOrder; }
 	
 	int GetSpotIndex(void) { return m_nSpotIndex; }
-	int CheckConnectors(int nSubscript);
-	vector<int> GetAdjacentSpots(void);
+	bool CheckConnectors(int nSubscript);
+	vector<GameSpot*> GetAdjacentSpots(void);
 	GameSpot* GetSpecificAdjacentSpot(int nSpot);
-	vector<int> GetJumpSpots(void);
+	vector<GameSpot*> GetJumpSpots(void);
 	GameSpot* GetSpecificJumpSpot(int nSpot);
 	
 	CCPoint GetPegTip(void) { return m_ccpPegTip; }

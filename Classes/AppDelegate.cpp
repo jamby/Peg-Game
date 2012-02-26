@@ -85,7 +85,7 @@ bool AppDelegate::applicationDidFinishLaunching()
 	// create a scene. it's an autorelease object
 	
 	// run
-	pDirector->runWithScene(GameScene::GetInstance());
+	pDirector->runWithScene(GameScene::GetSceneInstance());
 
 	return true;
 }
