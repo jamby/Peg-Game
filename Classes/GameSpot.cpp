@@ -58,7 +58,7 @@ GameSpot::GameSpot(int nSpotIndex)
 			break;
 		case 10:
 			m_ccpCirclePoint = ccp(229, 212);
-			m_ccpPegTip = ccp(229, 212);
+			m_ccpPegTip = ccp(229, 202);
 			break;
 		case 11:
 			m_ccpCirclePoint = ccp(66, 177);

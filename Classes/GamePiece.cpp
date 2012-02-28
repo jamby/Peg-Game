@@ -29,6 +29,8 @@ GamePiece::GamePiece(GameSpot* pSpot)
 	
 	this->addChild(m_pSprite);
 	m_pGameLayer = GameScene::GetLayerInstance();
+	
+	m_pGameLayer->SetNewSpot(pSpot);
 }
 
 GamePiece::~GamePiece(void)

@@ -29,7 +29,7 @@ public:
 	
 	GameSpot* GetSpot(int nSpot) { return m_vSpots[nSpot]; }
 	CCSprite* GetBoardSprite(int nSprite) { return m_vSprites[nSprite]; }
-
+	vector<GameSpot*> GetSpots(void) { return m_vSpots; }
 };
 
 #endif // __GAMEBOARD_H__

@@ -25,6 +25,7 @@ private:
 	vector<GamePiece*> m_vUsedPieces;
 	GamePiece* m_pSelectedPiece;
 	GameSpot* m_pNewSpot;
+	int m_nEmptyStartingSpot;
 	
 	//	b2World* m_b2World;
 	
@@ -41,6 +42,8 @@ public:
 	
 	GameSpot* GetNewSpot(void) { return m_pNewSpot; }
 	void SetNewSpot(GameSpot* newSpot) { m_pNewSpot = newSpot; }
+	
+	void StartUpGame(CCPoint location);
 	
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	

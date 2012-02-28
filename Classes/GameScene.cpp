@@ -109,18 +109,19 @@ void GameLayer::onEnter()
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		
 		m_Gameboard = new Gameboard();
-		for(int i = 0; i < 14; i++)
-			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(i)));
+//		for(int i = 0; i < 14; i++)
+//			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(i)));
 		//ccDrawCircle(ccp(50, 50), 1.0f, 0.0f, 6, false);
 		
 		this->addChild(m_Gameboard);
 		
 		for(int i = 0; i < 6; i++)
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
-		this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
+		//this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
 		m_pSelectedPiece = NULL;
 		m_pNewSpot = NULL;
+		m_nEmptyStartingSpot = -1;
 		
 		this->schedule(schedule_selector(GameScene::update));
 		
@@ -162,8 +163,8 @@ void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 //	{
 //		
 //	}
-	if(PointInCircle(location, m_vGamePieces[0]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
-		m_pSelectedPiece = m_vGamePieces[0];
+//	if(PointInCircle(location, m_vGamePieces[0]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
+//		m_pSelectedPiece = m_vGamePieces[0];
 }
 
 void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
@@ -172,35 +173,35 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-	if(m_pSelectedPiece != NULL)
-	{
-		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
-		
-		for(int i = 0; i < m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots().size(); i++)
-		{
-			if(PointInCircle(m_pSelectedPiece->getPosition(), 
-							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetCirclePoint(), 
-							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetRadius()) == true)
-			{
-				// Need to change this to be from the selected piece's jump spots
-				// However, more of this will have to do with the ending gameplay for this
-				// Like this, the part of code that is commented below
-				// The uncommented code would be the one that should be moved into the TouchesEnded function
-//				if(m_pSelectedPiece->GetCurrentSpot()->CheckConnectors(i) == true)
-//					m_pNewSpot = m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i];
-				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
-				{
-					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
-					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-				}
-			}
-			else
-				m_pNewSpot = NULL;
-		}
-		
-		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
-	}
+//	if(m_pSelectedPiece != NULL)
+//	{
+//		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
+//		
+//		for(int i = 0; i < m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots().size(); i++)
+//		{
+//			if(PointInCircle(m_pSelectedPiece->getPosition(), 
+//							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetCirclePoint(), 
+//							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetRadius()) == true)
+//			{
+//				// Need to change this to be from the selected piece's jump spots
+//				// However, more of this will have to do with the ending gameplay for this
+//				// Like this, the part of code that is commented below
+//				// The uncommented code would be the one that should be moved into the TouchesEnded function
+////				if(m_pSelectedPiece->GetCurrentSpot()->CheckConnectors(i) == true)
+////					m_pNewSpot = m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i];
+//				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
+//				{
+//					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
+//					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+//					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
+//				}
+//			}
+//			else
+//				m_pNewSpot = NULL;
+//		}
+//		
+//		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
+//	}
 }
 
 void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
@@ -209,6 +210,29 @@ void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
+	if(m_nEmptyStartingSpot == -1)
+		StartUpGame(location);
 	
 	m_pSelectedPiece = NULL;
+}
+
+void GameLayer::StartUpGame(CCPoint location)
+{
+	for(int i = 0; i < m_Gameboard->GetSpots().size(); i++)
+	{
+		if(PointInCircle(location, m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
+		{
+			m_nEmptyStartingSpot = i;
+			for(int j = 0; j < 14; j++)
+			{
+				if(j > i)
+					m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j)));
+				else if(j <= i)
+					m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j+1)));
+				
+				this->addChild(m_vGamePieces[j], m_vGamePieces[j]->GetCurrentSpot()->GetZOrder());
+			}
+			break;
+		}
+	}
 }
