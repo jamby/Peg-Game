@@ -223,16 +223,17 @@ void GameLayer::StartUpGame(CCPoint location)
 		if(PointInCircle(location, m_Gameboard->GetSpot(i)->GetCirclePoint(), m_Gameboard->GetSpot(i)->GetRadius()) == true)
 		{
 			m_nEmptyStartingSpot = i;
-			for(int j = 0; j < 14; j++)
-			{
-				if(j > i)
-					m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j)));
-				else if(j <= i)
-					m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j+1)));
-				
-				this->addChild(m_vGamePieces[j], m_vGamePieces[j]->GetCurrentSpot()->GetZOrder());
-			}
 			break;
 		}
+	}
+	
+	for(int i = 0, j = 0; i < 14; i++, j++)
+	{
+		if(j == m_nEmptyStartingSpot)
+			j++;
+		
+		m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j)));
+		
+		this->addChild(m_vGamePieces[i], m_vGamePieces[i]->GetCurrentSpot()->GetZOrder());
 	}
 }
