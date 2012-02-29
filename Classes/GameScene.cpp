@@ -159,12 +159,15 @@ void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-//	for(int i = 0; i < m_vGamePieces.size(); i++)
-//	{
-//		
-//	}
-//	if(PointInCircle(location, m_vGamePieces[0]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
-//		m_pSelectedPiece = m_vGamePieces[0];
+	for(int i = 0; i < m_vGamePieces.size(); i++)
+	{
+		if(PointInCircle(location, m_vGamePieces[i]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
+		{
+			m_pSelectedPiece = m_vGamePieces[i];
+			this->reorderChild(m_pSelectedPiece, 11);
+			break;
+		}
+	}
 }
 
 void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
@@ -173,8 +176,8 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-//	if(m_pSelectedPiece != NULL)
-//	{
+	if(m_pSelectedPiece != NULL)
+	{
 //		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
 //		
 //		for(int i = 0; i < m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots().size(); i++)
@@ -200,8 +203,8 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 //				m_pNewSpot = NULL;
 //		}
 //		
-//		m_pSelectedPiece->SetTopPoint(ccp(m_pSelectedPiece->getPosition().x, m_pSelectedPiece->getPosition().y + 88));
-//	}
+		m_pSelectedPiece->SetAllPositions(ccp(location.x, location.y - 88));
+	}
 }
 
 void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)

@@ -51,6 +51,8 @@ public:
 	
 	void SetZOrder(int nZOrder) { m_nZOrder = nZOrder; }
 	int GetZOrder(void) { return m_nZOrder; }
+	
+	void SetAllPositions(CCPoint ccpPosition);
 };
 
 #endif // __GAMEPIECE_H_

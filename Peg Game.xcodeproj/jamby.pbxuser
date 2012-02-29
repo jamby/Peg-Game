@@ -118,6 +118,11 @@
 			38610CA914FD8744008DEA06 /* PBXTextBookmark */ = 38610CA914FD8744008DEA06 /* PBXTextBookmark */;
 			38610CAA14FD8744008DEA06 /* PBXTextBookmark */ = 38610CAA14FD8744008DEA06 /* PBXTextBookmark */;
 			38610CAE14FD875C008DEA06 /* PBXTextBookmark */ = 38610CAE14FD875C008DEA06 /* PBXTextBookmark */;
+			38610CB514FDB8CA008DEA06 /* PBXTextBookmark */ = 38610CB514FDB8CA008DEA06 /* PBXTextBookmark */;
+			38610CB614FDB8CA008DEA06 /* PBXTextBookmark */ = 38610CB614FDB8CA008DEA06 /* PBXTextBookmark */;
+			38610CB714FDB8CA008DEA06 /* PBXTextBookmark */ = 38610CB714FDB8CA008DEA06 /* PBXTextBookmark */;
+			38610CB814FDB8CA008DEA06 /* PBXTextBookmark */ = 38610CB814FDB8CA008DEA06 /* PBXTextBookmark */;
+			38610CC014FDB925008DEA06 /* PBXTextBookmark */ = 38610CC014FDB925008DEA06 /* PBXTextBookmark */;
 			38994DCD14F1EF0A00EFB560 = 38994DCD14F1EF0A00EFB560 /* PBXTextBookmark */;
 			38B8EE4C14F3158E0070DE03 = 38B8EE4C14F3158E0070DE03 /* PBXTextBookmark */;
 			38B8EE4D14F3158E0070DE03 = 38B8EE4D14F3158E0070DE03 /* PBXTextBookmark */;
@@ -156,7 +161,7 @@
 		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 213;
+		rLoc = 216;
 		rType = 1;
 	};
 	38610C2514FCAAE8008DEA06 /* PBXTextBookmark */ = {
@@ -205,7 +210,7 @@
 		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
 		fallbackIsa = XCBuildMessageTextBookmark;
 		rLen = 0;
-		rLoc = 213;
+		rLoc = 216;
 		rType = 1;
 	};
 	38610C2F14FCAB11008DEA06 /* PBXTextBookmark */ = {
@@ -233,7 +238,7 @@
 		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
 		name = "GamePiece.cpp: 27";
 		rLen = 0;
-		rLoc = 612;
+		rLoc = 618;
 		rType = 0;
 		vrLen = 1072;
 		vrLoc = 0;
@@ -293,7 +298,7 @@
 		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
 		name = "GamePiece.cpp: 27";
 		rLen = 0;
-		rLoc = 612;
+		rLoc = 618;
 		rType = 0;
 		vrLen = 1072;
 		vrLoc = 0;
@@ -463,7 +468,7 @@
 		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
 		name = "GamePiece.cpp: 41";
 		rLen = 0;
-		rLoc = 843;
+		rLoc = 849;
 		rType = 0;
 		vrLen = 1110;
 		vrLoc = 169;
@@ -533,7 +538,7 @@
 		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
 		name = "GamePiece.cpp: 41";
 		rLen = 0;
-		rLoc = 843;
+		rLoc = 849;
 		rType = 0;
 		vrLen = 1132;
 		vrLoc = 146;
@@ -567,6 +572,56 @@
 		rType = 0;
 		vrLen = 1705;
 		vrLoc = 4709;
+	};
+	38610CB514FDB8CA008DEA06 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38C302DE14EB1DEC00E24912 /* GamePiece.h */;
+		name = "GamePiece.h: 55";
+		rLen = 0;
+		rLoc = 1260;
+		rType = 0;
+		vrLen = 1189;
+		vrLoc = 75;
+	};
+	38610CB614FDB8CA008DEA06 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
+		name = "GamePiece.cpp: 27";
+		rLen = 0;
+		rLoc = 592;
+		rType = 0;
+		vrLen = 1137;
+		vrLoc = 289;
+	};
+	38610CB714FDB8CA008DEA06 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
+		name = "GameScene.cpp: 203";
+		rLen = 0;
+		rLoc = 5550;
+		rType = 0;
+		vrLen = 2015;
+		vrLoc = 3855;
+	};
+	38610CB814FDB8CA008DEA06 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
+		name = "GameScene.cpp: 202";
+		rLen = 0;
+		rLoc = 5547;
+		rType = 0;
+		vrLen = 1597;
+		vrLoc = 4754;
+	};
+	38610CC014FDB925008DEA06 /* PBXTextBookmark */ = {
+		isa = PBXTextBookmark;
+		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
+		name = "GameScene.cpp: 167";
+		rLen = 0;
+		rLoc = 3902;
+		rType = 0;
+		vrLen = 1967;
+		vrLoc = 3709;
 	};
 	38994DCD14F1EF0A00EFB560 /* PBXTextBookmark */ = {
 		isa = PBXTextBookmark;
@@ -770,7 +825,7 @@
 		fRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */;
 		name = "GamePiece.cpp: 33";
 		rLen = 0;
-		rLoc = 768;
+		rLoc = 774;
 		rType = 0;
 		vrLen = 1077;
 		vrLoc = 0;
@@ -800,7 +855,7 @@
 		fRef = 38C302DF14EB1DEC00E24912 /* GameScene.cpp */;
 		name = "GameScene.cpp: 190";
 		rLen = 0;
-		rLoc = 4118;
+		rLoc = 4168;
 		rType = 0;
 		vrLen = 2052;
 		vrLoc = 3681;
@@ -882,24 +937,24 @@
 	};
 	38C302DD14EB1DEC00E24912 /* GamePiece.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {772, 793}}";
-			sepNavSelRange = "{843, 0}";
-			sepNavVisRange = "{146, 1132}";
+			sepNavIntBoundsRect = "{{0, 0}, {772, 871}}";
+			sepNavSelRange = "{592, 0}";
+			sepNavVisRange = "{289, 1137}";
 			sepNavWindowFrame = "{{15, 215}, {1119, 958}}";
 		};
 	};
 	38C302DE14EB1DEC00E24912 /* GamePiece.h */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {772, 728}}";
-			sepNavSelRange = "{356, 0}";
-			sepNavVisRange = "{75, 1168}";
+			sepNavIntBoundsRect = "{{0, 0}, {772, 754}}";
+			sepNavSelRange = "{1260, 0}";
+			sepNavVisRange = "{75, 1189}";
 		};
 	};
 	38C302DF14EB1DEC00E24912 /* GameScene.cpp */ = {
 		uiCtxt = {
-			sepNavIntBoundsRect = "{{0, 0}, {880, 2886}}";
-			sepNavSelRange = "{6187, 0}";
-			sepNavVisRange = "{4709, 1705}";
+			sepNavIntBoundsRect = "{{0, 0}, {772, 2769}}";
+			sepNavSelRange = "{3902, 0}";
+			sepNavVisRange = "{3709, 1967}";
 		};
 	};
 	38C302E014EB1DEC00E24912 /* GameScene.h */ = {
