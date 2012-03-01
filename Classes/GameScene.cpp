@@ -122,6 +122,7 @@ void GameLayer::onEnter()
 		m_gpSelectedPiece = NULL;
 		m_gsNewSpot = NULL;
 		m_nEmptyStartingSpot = -1;
+		m_nRemovingPiece = -1;
 		
 		this->schedule(schedule_selector(GameScene::update));
 		
@@ -152,6 +153,23 @@ void GameLayer::update(ccTime dt)
 	for(int i = 0; i < m_vGamePieces.size(); i++)
 	{
 		m_vGamePieces[i]->update(dt);
+	}
+	
+	if(m_nRemovingPiece > -1)
+	{
+		// Must make sure it's not visible, has no spot, and is in a new position
+		m_vGamePieces[m_nRemovingPiece]->setIsVisible(false);
+		m_vGamePieces[m_nRemovingPiece]->SetPreviousSpot(m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot());
+		m_vGamePieces[m_nRemovingPiece]->GetPreviousSpot()->SetGamePiece(NULL);
+		m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot()->SetGamePiece(NULL);
+		m_vGamePieces[m_nRemovingPiece]->SetCurrentSpot(NULL);
+		m_vGamePieces[m_nRemovingPiece]->SetAllPositions(ccp(-200, -200));
+		// Add it to the UsedPieces
+		m_vUsedPieces.push_back(m_vGamePieces[m_nRemovingPiece]);
+		// Remove it from the GamePieces
+		m_vGamePieces.erase(m_vGamePieces.begin()+m_nRemovingPiece);
+		
+		m_nRemovingPiece = -1;
 	}
 }
 

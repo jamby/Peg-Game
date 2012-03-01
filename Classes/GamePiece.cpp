@@ -83,17 +83,7 @@ void GamePiece::update(ccTime dt)
 					{
 						if(m_pGameLayer->GetGamePieces()[j] == m_gsCurrentSpot->GetAdjacentSpots()[i]->GetGamePiece())
 						{
-							// Must make sure it's not visible, has no spot, and is in a new position
-							m_pGameLayer->GetGamePieces()[j]->setIsVisible(false);
-							m_pGameLayer->GetGamePieces()[j]->SetPreviousSpot(m_pGameLayer->GetGamePieces()[j]->GetCurrentSpot());
-							m_pGameLayer->GetGamePieces()[j]->GetPreviousSpot()->SetGamePiece(NULL);
-							m_pGameLayer->GetGamePieces()[j]->GetCurrentSpot()->SetGamePiece(NULL);
-							m_pGameLayer->GetGamePieces()[j]->SetCurrentSpot(NULL);
-							m_pGameLayer->GetGamePieces()[j]->SetAllPositions(ccp(-200, -200));
-							// Add it to the UsedPieces
-							m_pGameLayer->AddUsedPiece(m_pGameLayer->GetGamePieces()[j]);
-							// Remove it from the GamePieces
-							m_pGameLayer->GetGamePieces().erase(m_pGameLayer->GetGamePieces().begin()+j);
+							m_pGameLayer->SetRemovingPiece(j);
 							break;
 						}
 					}

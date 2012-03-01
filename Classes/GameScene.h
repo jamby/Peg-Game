@@ -26,6 +26,7 @@ private:
 	GamePiece* m_gpSelectedPiece;
 	GameSpot* m_gsNewSpot;
 	int m_nEmptyStartingSpot;
+	int m_nRemovingPiece;
 	
 	//	b2World* m_b2World;
 	
@@ -46,6 +47,7 @@ public:
 	void AddUsedPiece(GamePiece* pGamePiece) { m_vGamePieces.push_back(pGamePiece); }
 	vector<GamePiece*> GetUsedPieces(void) { return m_vUsedPieces; }
 	
+	void SetRemovingPiece(int nRemovingPiece) { m_nRemovingPiece = nRemovingPiece; }
 	
 	void StartUpGame(CCPoint location);
 	
