@@ -9,18 +9,6 @@
 #include "cocos2d.h"
 #include <math.h>
 
-float Lerp(float fStart, float fEnd, float fPercent)
-{
-	return fStart + ((fEnd - fStart) * fPercent);
-}
+float Lerp(float fStart, float fEnd, float fPercent);
 
-bool PointInCircle(CCPoint ccpPoint, CCPoint ccpCircleCenter, float fRadius)
-{
-	float fDistance = sqrt((ccpPoint.x - ccpCircleCenter.x) * (ccpPoint.x - ccpCircleCenter.x) + 
-						  (ccpPoint.y - ccpCircleCenter.y) * (ccpPoint.y - ccpCircleCenter.y));
-	
-	if(fRadius >= fDistance )
-		return true;
-	else
-		return false;
-}
+bool PointInCircle(cocos2d::CCPoint ccpPoint, cocos2d::CCPoint ccpCircleCenter, float fRadius);

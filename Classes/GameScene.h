@@ -23,8 +23,8 @@ private:
 	Gameboard* m_Gameboard;
 	vector<GamePiece*> m_vGamePieces;
 	vector<GamePiece*> m_vUsedPieces;
-	GamePiece* m_pSelectedPiece;
-	GameSpot* m_pNewSpot;
+	GamePiece* m_gpSelectedPiece;
+	GameSpot* m_gsNewSpot;
 	int m_nEmptyStartingSpot;
 	
 	//	b2World* m_b2World;
@@ -40,8 +40,12 @@ public:
 	void ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent);
 	void ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent);
 	
-	GameSpot* GetNewSpot(void) { return m_pNewSpot; }
-	void SetNewSpot(GameSpot* newSpot) { m_pNewSpot = newSpot; }
+	GameSpot* GetNewSpot(void) { return m_gsNewSpot; }
+	void SetNewSpot(GameSpot* newSpot) { m_gsNewSpot = newSpot; }
+	vector<GamePiece*> GetGamePieces(void) { return m_vGamePieces; }
+	void AddUsedPiece(GamePiece* pGamePiece) { m_vGamePieces.push_back(pGamePiece); }
+	vector<GamePiece*> GetUsedPieces(void) { return m_vUsedPieces; }
+	
 	
 	void StartUpGame(CCPoint location);
 	
@@ -50,7 +54,7 @@ public:
 	// a selector callback
 	virtual void menuCloseCallback(CCObject* pSender);
 	
-	GamePiece* GetSelectedPiece(void) { return m_pSelectedPiece; }
+	GamePiece* GetSelectedPiece(void) { return m_gpSelectedPiece; }
 	
 	LAYER_NODE_FUNC(GameLayer);
 };

@@ -93,19 +93,10 @@ GameSpot::~GameSpot(void)
 
 bool GameSpot::CheckConnectors(int nSubscript)
 {
-	if(m_vAdjacentSpots[nSubscript] == NULL && m_vJumpSpots[nSubscript] == NULL)
-		return false;
-	else if(m_vAdjacentSpots[nSubscript] && m_vJumpSpots[nSubscript] == NULL)
+	if(m_vAdjacentSpots[nSubscript]->GetGamePiece() != NULL && m_vJumpSpots[nSubscript]->GetGamePiece() == NULL)
 		return true;
-	else if(m_vJumpSpots[nSubscript] && m_vAdjacentSpots[nSubscript] == NULL)
-		return false;
 	else
 		return false;
-}
-
-vector<GameSpot*> GameSpot::GetAdjacentSpots(void)
-{	
-	return m_vAdjacentSpots;
 }
 
 GameSpot* GameSpot::GetSpecificAdjacentSpot(int nSpot)
@@ -128,11 +119,6 @@ GameSpot* GameSpot::GetSpecificAdjacentSpot(int nSpot)
 	else
 		return NULL;
 	
-}
-
-vector<GameSpot*> GameSpot::GetJumpSpots(void)
-{
-	return m_vJumpSpots;
 }
 
 GameSpot* GameSpot::GetSpecificJumpSpot(int nSpot)

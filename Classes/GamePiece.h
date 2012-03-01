@@ -37,12 +37,17 @@ public:
 	GamePiece(GameSpot* pSpot);
 	~GamePiece(void);
 	
-	bool GetIsChosen(void) {return m_bIsChosen; }
+	void update(ccTime dt);
+	
+	bool GetIsChosen(void) { return m_bIsChosen; }
+	void SetIsChosen(bool bChosen) { m_bIsChosen = bChosen; }
 	bool CanJump(void);
 	void JumpToSpot(int nSpot);
 	GameSpot* GetCurrentSpot(void) { return m_gsCurrentSpot; }
 	int GetCurrentSpotNumber(void) { return m_gsCurrentSpot->GetSpotIndex(); }
 	void SetCurrentSpot(GameSpot* gsCurrentSpot) { m_gsCurrentSpot = gsCurrentSpot; }
+	GameSpot* GetPreviousSpot(void) { return m_gsPreviousSpot; }
+	void SetPreviousSpot(GameSpot* gsPreviousSpot) { m_gsPreviousSpot = gsPreviousSpot; }
 	CCSprite* GetSprite(void) { return m_pSprite; }
 	
 	void SetTopPoint(CCPoint ccpTop) { m_ccpTop = ccpTop; }

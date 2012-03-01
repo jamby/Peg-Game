@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38610D3014FF3BD1008DEA06 /* FPGMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38610D2F14FF3BD1008DEA06 /* FPGMath.cpp */; };
 		38C302E514EB1DEC00E24912 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38C302D914EB1DEC00E24912 /* AppDelegate.cpp */; };
 		38C302E614EB1DEC00E24912 /* Gameboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38C302DB14EB1DEC00E24912 /* Gameboard.cpp */; };
 		38C302E714EB1DEC00E24912 /* GamePiece.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38C302DD14EB1DEC00E24912 /* GamePiece.cpp */; };
@@ -313,6 +314,7 @@
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* Peg Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peg Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3B9A820EF2151B00286867 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
+		38610D2F14FF3BD1008DEA06 /* FPGMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPGMath.cpp; sourceTree = "<group>"; };
 		38994E0514F30C8600EFB560 /* FPGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPGMath.h; sourceTree = "<group>"; };
 		38C302D914EB1DEC00E24912 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
 		38C302DA14EB1DEC00E24912 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -708,6 +710,7 @@
 				38C302E314EB1DEC00E24912 /* MenuScene.cpp */,
 				38C302E414EB1DEC00E24912 /* MenuScene.h */,
 				38994E0514F30C8600EFB560 /* FPGMath.h */,
+				38610D2F14FF3BD1008DEA06 /* FPGMath.cpp */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -1481,6 +1484,7 @@
 				38C302E814EB1DEC00E24912 /* GameScene.cpp in Sources */,
 				38C302E914EB1DEC00E24912 /* GameSpot.cpp in Sources */,
 				38C302EA14EB1DEC00E24912 /* MenuScene.cpp in Sources */,
+				38610D3014FF3BD1008DEA06 /* FPGMath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

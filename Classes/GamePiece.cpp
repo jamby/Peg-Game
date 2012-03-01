@@ -9,6 +9,7 @@
 
 #include "GamePiece.h"
 #include "GameScene.h"
+#include "FPGMath.h"
 
 GamePiece::GamePiece(GameSpot* pSpot)
 {
@@ -21,16 +22,12 @@ GamePiece::GamePiece(GameSpot* pSpot)
 	m_pSprite = CCSprite::spriteWithFile("PegBlue.png");
 	m_pSprite->setAnchorPoint(ccp(.5, 0));
 	
+	//Sets all position data, the actual position of the object and the position of the top area
 	SetAllPositions(m_gsCurrentSpot->GetPegTip());
-	
-	// Set the top portion's collision with a point above the position and a radius
-	//m_ccpTop = ccp(getPosition().x, getPosition().y + 88);
 	m_fRadius = 15.0f;
 	
 	this->addChild(m_pSprite);
 	m_pGameLayer = GameScene::GetLayerInstance();
-	
-	//m_pGameLayer->SetNewSpot(pSpot);
 }
 
 GamePiece::~GamePiece(void)
@@ -64,4 +61,64 @@ void GamePiece::SetAllPositions(CCPoint ccpPosition)
 {
 	setPosition(ccpPosition);
 	m_ccpTop = ccp(getPosition().x, getPosition().y + 88);
+}
+
+void GamePiece::update(ccTime dt)
+{
+	if(m_bIsChosen == true)
+	{
+		bool bAllSpotsDone = false;
+		for(int i = 0; i < m_gsCurrentSpot->GetJumpSpots().size(); i++)
+		{
+			// Check to see if the Peg's in a new spot's circle
+			if(PointInCircle(getPosition(), m_gsCurrentSpot->GetJumpSpots()[i]->GetCirclePoint(), 
+							 m_gsCurrentSpot->GetJumpSpots()[i]->GetRadius()) == true)
+			{
+				// If it's true, check the specific connector to see if it has a peg in the Adjacent Spot, but not the Jump Spot
+				if(m_gsCurrentSpot->CheckConnectors(i) == true)
+				{
+					// If that spot comes back as true, search through the Game Layer's pieces to get rid of
+					// that specific Peg from the GamePieces and add it to the UsedPieces
+					for(int j = 0; j < m_pGameLayer->GetGamePieces().size(); j++)
+					{
+						if(m_pGameLayer->GetGamePieces()[j] == m_gsCurrentSpot->GetAdjacentSpots()[i]->GetGamePiece())
+						{
+							// Must make sure it's not visible, has no spot, and is in a new position
+							m_pGameLayer->GetGamePieces()[j]->setIsVisible(false);
+							m_pGameLayer->GetGamePieces()[j]->SetPreviousSpot(m_pGameLayer->GetGamePieces()[j]->GetCurrentSpot());
+							m_pGameLayer->GetGamePieces()[j]->GetPreviousSpot()->SetGamePiece(NULL);
+							m_pGameLayer->GetGamePieces()[j]->GetCurrentSpot()->SetGamePiece(NULL);
+							m_pGameLayer->GetGamePieces()[j]->SetCurrentSpot(NULL);
+							m_pGameLayer->GetGamePieces()[j]->SetAllPositions(ccp(-200, -200));
+							// Add it to the UsedPieces
+							m_pGameLayer->AddUsedPiece(m_pGameLayer->GetGamePieces()[j]);
+							// Remove it from the GamePieces
+							m_pGameLayer->GetGamePieces().erase(m_pGameLayer->GetGamePieces().begin()+j);
+							break;
+						}
+					}
+					// PreviousSpot needs to not be the GamePiece's CurrentSpot
+					SetPreviousSpot(m_gsCurrentSpot);
+					m_gsPreviousSpot->SetGamePiece(NULL);
+					SetCurrentSpot(m_gsCurrentSpot->GetJumpSpots()[i]);
+					m_gsCurrentSpot->SetGamePiece(this);
+					// Set all the positions and reorder the child
+					SetAllPositions(m_gsCurrentSpot->GetPegTip());
+					m_pGameLayer->reorderChild(this, m_gsCurrentSpot->GetZOrder());
+					break;
+				}
+			}
+			
+			if(i == m_gsCurrentSpot->GetJumpSpots().size()-1)
+				bAllSpotsDone = true;
+		}
+		
+		if(bAllSpotsDone == true)
+		{
+			SetAllPositions(m_gsCurrentSpot->GetPegTip());
+			m_pGameLayer->reorderChild(this, m_gsCurrentSpot->GetZOrder());
+		}
+			
+		m_bIsChosen = false;
+	}
 }

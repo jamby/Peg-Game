@@ -46,12 +46,14 @@ public:
 	void AddAdjacentSpot(GameSpot* gsAdjacentSpot) { m_vAdjacentSpots.push_back(gsAdjacentSpot); }
 	void SetZOrder(int nNum) { m_nZOrder = nNum; }
 	int GetZOrder(void) { return m_nZOrder; }
+	void SetGamePiece(GamePiece* gpPiece) { m_gpPiece = gpPiece; }
+	GamePiece* GetGamePiece(void) { return m_gpPiece; }
 	
 	int GetSpotIndex(void) { return m_nSpotIndex; }
 	bool CheckConnectors(int nSubscript);
-	vector<GameSpot*> GetAdjacentSpots(void);
+	vector<GameSpot*> GetAdjacentSpots(void) { return m_vAdjacentSpots; }
 	GameSpot* GetSpecificAdjacentSpot(int nSpot);
-	vector<GameSpot*> GetJumpSpots(void);
+	vector<GameSpot*> GetJumpSpots(void) { return m_vJumpSpots; }
 	GameSpot* GetSpecificJumpSpot(int nSpot);
 	
 	CCPoint GetPegTip(void) { return m_ccpPegTip; }

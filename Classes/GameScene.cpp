@@ -119,8 +119,8 @@ void GameLayer::onEnter()
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
 		//this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
-		m_pSelectedPiece = NULL;
-		m_pNewSpot = NULL;
+		m_gpSelectedPiece = NULL;
+		m_gsNewSpot = NULL;
 		m_nEmptyStartingSpot = -1;
 		
 		this->schedule(schedule_selector(GameScene::update));
@@ -149,7 +149,10 @@ void GameLayer::onExit()
 
 void GameLayer::update(ccTime dt)
 {
-	
+	for(int i = 0; i < m_vGamePieces.size(); i++)
+	{
+		m_vGamePieces[i]->update(dt);
+	}
 }
 
 void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
@@ -163,8 +166,8 @@ void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	{
 		if(PointInCircle(location, m_vGamePieces[i]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
 		{
-			m_pSelectedPiece = m_vGamePieces[i];
-			this->reorderChild(m_pSelectedPiece, 11);
+			m_gpSelectedPiece = m_vGamePieces[i];
+			this->reorderChild(m_gpSelectedPiece, 11);
 			break;
 		}
 	}
@@ -176,7 +179,7 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	CCPoint location = touch->locationInView(touch->view());
 	location = CCDirector::sharedDirector()->convertToGL(location);
 	
-	if(m_pSelectedPiece != NULL)
+	if(m_gpSelectedPiece != NULL)
 	{
 //		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
 //		
@@ -203,7 +206,7 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 //				m_pNewSpot = NULL;
 //		}
 //		
-		m_pSelectedPiece->SetAllPositions(ccp(location.x, location.y - 88));
+		m_gpSelectedPiece->SetAllPositions(ccp(location.x, location.y - 88));
 	}
 }
 
@@ -216,7 +219,12 @@ void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 	if(m_nEmptyStartingSpot == -1)
 		StartUpGame(location);
 	
-	m_pSelectedPiece = NULL;
+	
+	if(m_gpSelectedPiece != NULL)
+	{
+		m_gpSelectedPiece->SetIsChosen(true);
+		m_gpSelectedPiece = NULL;
+	}
 }
 
 void GameLayer::StartUpGame(CCPoint location)
@@ -230,13 +238,17 @@ void GameLayer::StartUpGame(CCPoint location)
 		}
 	}
 	
-	for(int i = 0, j = 0; i < 14; i++, j++)
+	if(m_nEmptyStartingSpot != -1)
 	{
-		if(j == m_nEmptyStartingSpot)
-			j++;
-		
-		m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j)));
-		
-		this->addChild(m_vGamePieces[i], m_vGamePieces[i]->GetCurrentSpot()->GetZOrder());
+		for(int i = 0, j = 0; i < 14; i++, j++)
+		{
+			if(j == m_nEmptyStartingSpot)
+				j++;
+			
+			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(j)));
+			m_Gameboard->GetSpot(j)->SetGamePiece(m_vGamePieces[i]);
+			
+			this->addChild(m_vGamePieces[i], m_vGamePieces[i]->GetCurrentSpot()->GetZOrder());
+		}
 	}
 }
