@@ -28,7 +28,11 @@ private:
 	int m_nEmptyStartingSpot;
 	int m_nRemovingPiece;
 	
-	//	b2World* m_b2World;
+	bool m_bRemovingPiece;
+	float m_fOpacityPer;
+	float m_fOpacityLerp;
+	float m_fYPer;
+	float m_fYLerp;
 	
 public:
 	// Here's a difference. Method 'init' in cocos2d-x returns bool, instead of returning 'id' in cocos2d-iphone

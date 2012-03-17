@@ -124,6 +124,12 @@ void GameLayer::onEnter()
 		m_nEmptyStartingSpot = -1;
 		m_nRemovingPiece = -1;
 		
+		m_bRemovingPiece = false;
+		m_fOpacityPer = 0.0f;
+		m_fOpacityLerp = 0.0f;
+		m_fYPer = 0.0f;
+		m_fYLerp = 0.0f;
+		
 		this->schedule(schedule_selector(GameScene::update));
 		
 		bRet = true;
@@ -157,6 +163,16 @@ void GameLayer::update(ccTime dt)
 	
 	if(m_nRemovingPiece > -1)
 	{
+//		if(m_bRemovingPiece == true)
+//		{
+//			if(dt >= .016f)
+//			{
+//				m_fYPer += .1f;
+//				m_fYLerp = Lerp(, 0, m_fYPer)
+//				m_fOpacityPer += .1f;
+//				m_fOpacityLerp = Lerp(255, 0, m_fOpacityPer);
+//			}
+//		}
 		// Must make sure it's not visible, has no spot, and is in a new position
 		m_vGamePieces[m_nRemovingPiece]->setIsVisible(false);
 		m_vGamePieces[m_nRemovingPiece]->SetPreviousSpot(m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot());
@@ -182,7 +198,7 @@ void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
 	
 	for(int i = 0; i < m_vGamePieces.size(); i++)
 	{
-		if(PointInCircle(location, m_vGamePieces[i]->GetTopPoint(), m_vGamePieces[0]->GetRadius()) == true)
+		if(PointInCircle(location, m_vGamePieces[i]->GetTopPoint(), m_vGamePieces[i]->GetRadius()) == true)
 		{
 			m_gpSelectedPiece = m_vGamePieces[i];
 			this->reorderChild(m_gpSelectedPiece, 11);

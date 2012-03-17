@@ -136,8 +136,8 @@ void Gameboard::init(void)
 	m_vSpots[7]->AddAdjacentSpot(m_vSpots[8]);
 	
 	// Jump Spots
-	m_vSpots[7]->AddAdjacentSpot(m_vSpots[2]);
-	m_vSpots[7]->AddAdjacentSpot(m_vSpots[9]);
+	m_vSpots[7]->AddJumpSpot(m_vSpots[2]);
+	m_vSpots[7]->AddJumpSpot(m_vSpots[9]);
 	
 	m_vSpots[7]->SetZOrder(7);
 	

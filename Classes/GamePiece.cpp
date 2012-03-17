@@ -98,7 +98,7 @@ void GamePiece::update(ccTime dt)
 					break;
 				}
 			}
-			
+
 			if(i == m_gsCurrentSpot->GetJumpSpots().size()-1)
 				bAllSpotsDone = true;
 		}

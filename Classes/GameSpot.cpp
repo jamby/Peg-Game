@@ -22,63 +22,63 @@ GameSpot::GameSpot(int nSpotIndex)
 	{
 		case 1:
 			m_ccpCirclePoint = ccp(159, 318);
-			m_ccpPegTip = ccp(159, 308);
+			m_ccpPegTip = ccp(159, 303);
 			break;
 		case 2:
 			m_ccpCirclePoint = ccp(136, 283);
-			m_ccpPegTip = ccp(136, 273);
+			m_ccpPegTip = ccp(136, 268);
 			break;
 		case 3:
 			m_ccpCirclePoint = ccp(182, 283);
-			m_ccpPegTip = ccp(182, 273);
+			m_ccpPegTip = ccp(182, 268);
 			break;
 		case 4:
 			m_ccpCirclePoint = ccp(113, 247);
-			m_ccpPegTip = ccp(113, 237);
+			m_ccpPegTip = ccp(113, 232);
 			break;
 		case 5:
 			m_ccpCirclePoint = ccp(159, 247);
-			m_ccpPegTip = ccp(159, 237);
+			m_ccpPegTip = ccp(159, 232);
 			break;
 		case 6:
 			m_ccpCirclePoint = ccp(206, 247);
-			m_ccpPegTip = ccp(206, 237);
+			m_ccpPegTip = ccp(206, 232);
 			break;
 		case 7:
 			m_ccpCirclePoint = ccp(89, 212);
-			m_ccpPegTip = ccp(89, 202);
+			m_ccpPegTip = ccp(89, 197);
 			break;
 		case 8:
 			m_ccpCirclePoint = ccp(136, 212);
-			m_ccpPegTip = ccp(136, 202);
+			m_ccpPegTip = ccp(136, 197);
 			break;
 		case 9:
 			m_ccpCirclePoint = ccp(183, 212);
-			m_ccpPegTip = ccp(183, 202);
+			m_ccpPegTip = ccp(183, 197);
 			break;
 		case 10:
 			m_ccpCirclePoint = ccp(229, 212);
-			m_ccpPegTip = ccp(229, 202);
+			m_ccpPegTip = ccp(229, 197);
 			break;
 		case 11:
 			m_ccpCirclePoint = ccp(66, 177);
-			m_ccpPegTip = ccp(66, 167);
+			m_ccpPegTip = ccp(66, 162);
 			break;
 		case 12:
 			m_ccpCirclePoint = ccp(113, 177);
-			m_ccpPegTip = ccp(113, 167);
+			m_ccpPegTip = ccp(113, 162);
 			break;
 		case 13:
 			m_ccpCirclePoint = ccp(159, 177);
-			m_ccpPegTip = ccp(159, 167);
+			m_ccpPegTip = ccp(159, 162);
 			break;
 		case 14:
 			m_ccpCirclePoint = ccp(206, 177);
-			m_ccpPegTip = ccp(206, 167);
+			m_ccpPegTip = ccp(206, 162);
 			break;
 		case 15:
 			m_ccpCirclePoint = ccp(253, 177);
-			m_ccpPegTip = ccp(253, 167);
+			m_ccpPegTip = ccp(253, 162);
 			break;
 		default:
 			break;
