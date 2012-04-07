@@ -163,29 +163,42 @@ void GameLayer::update(ccTime dt)
 	
 	if(m_nRemovingPiece > -1)
 	{
-//		if(m_bRemovingPiece == true)
-//		{
-//			if(dt >= .016f)
-//			{
-//				m_fYPer += .1f;
-//				m_fYLerp = Lerp(, 0, m_fYPer)
-//				m_fOpacityPer += .1f;
-//				m_fOpacityLerp = Lerp(255, 0, m_fOpacityPer);
-//			}
-//		}
-		// Must make sure it's not visible, has no spot, and is in a new position
-		m_vGamePieces[m_nRemovingPiece]->setIsVisible(false);
-		m_vGamePieces[m_nRemovingPiece]->SetPreviousSpot(m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot());
-		m_vGamePieces[m_nRemovingPiece]->GetPreviousSpot()->SetGamePiece(NULL);
-		m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot()->SetGamePiece(NULL);
-		m_vGamePieces[m_nRemovingPiece]->SetCurrentSpot(NULL);
-		m_vGamePieces[m_nRemovingPiece]->SetAllPositions(ccp(-200, -200));
-		// Add it to the UsedPieces
-		m_vUsedPieces.push_back(m_vGamePieces[m_nRemovingPiece]);
-		// Remove it from the GamePieces
-		m_vGamePieces.erase(m_vGamePieces.begin()+m_nRemovingPiece);
-		
-		m_nRemovingPiece = -1;
+		if(m_bRemovingPiece == true)
+		{
+			if(dt >= .016f)
+			{
+				m_fYPer += .1f;
+				m_fYLerp = Lerp(m_vGamePieces[m_nRemovingPiece]->GetLowPosLerp().y, 
+								m_vGamePieces[m_nRemovingPiece]->GetHighPosLerp().y, m_fYPer);
+				m_vGamePieces[m_nRemovingPiece]->setPosition(ccp(m_vGamePieces[m_nRemovingPiece]->getPosition().x,
+																 m_fYLerp));
+				m_fOpacityPer += .1f;
+				m_fOpacityLerp = Lerp(255, 0, m_fOpacityPer);
+				m_vGamePieces[m_nRemovingPiece]->GetSprite()->setOpacity(m_fOpacityLerp);
+				if(m_fYPer >= 1.0f)
+				{
+					m_fYPer = 0.0f;
+					m_bRemovingPiece = false;
+				}
+			}
+		}
+		else
+		{
+			// Must make sure it's not visible, has no spot, and is in a new position
+			m_vGamePieces[m_nRemovingPiece]->setIsVisible(false);
+			m_vGamePieces[m_nRemovingPiece]->GetSprite()->setOpacity(255);
+			m_vGamePieces[m_nRemovingPiece]->SetPreviousSpot(m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot());
+			m_vGamePieces[m_nRemovingPiece]->GetPreviousSpot()->SetGamePiece(NULL);
+			m_vGamePieces[m_nRemovingPiece]->GetCurrentSpot()->SetGamePiece(NULL);
+			m_vGamePieces[m_nRemovingPiece]->SetCurrentSpot(NULL);
+			m_vGamePieces[m_nRemovingPiece]->SetAllPositions(ccp(-200, -200));
+			// Add it to the UsedPieces
+			m_vUsedPieces.push_back(m_vGamePieces[m_nRemovingPiece]);
+			// Remove it from the GamePieces
+			m_vGamePieces.erase(m_vGamePieces.begin()+m_nRemovingPiece);
+			
+			m_nRemovingPiece = -1;
+		}
 	}
 }
 

@@ -52,6 +52,7 @@ public:
 	vector<GamePiece*> GetUsedPieces(void) { return m_vUsedPieces; }
 	
 	void SetRemovingPiece(int nRemovingPiece) { m_nRemovingPiece = nRemovingPiece; }
+	void SetBoolRemovingPiece(bool bRemovingPiece) { m_bRemovingPiece = bRemovingPiece; }
 	
 	void StartUpGame(CCPoint location);
 	

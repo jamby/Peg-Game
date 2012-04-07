@@ -329,7 +329,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>3822B1471501C2050074CF9E</string>
+										<string>3822B1741530FA790074CF9E</string>
 										<key>history</key>
 										<array>
 											<string>38C3031514EB20F000E24912</string>
@@ -349,18 +349,18 @@
 											<string>38610CD914FDBE09008DEA06</string>
 											<string>38610CDB14FDBE09008DEA06</string>
 											<string>38610D4E14FF3FEC008DEA06</string>
-											<string>38610DFD14FF4B90008DEA06</string>
 											<string>38610DFF14FF4B90008DEA06</string>
 											<string>3822B0F514FF650E0074CF9E</string>
 											<string>3822B0F614FF650E0074CF9E</string>
 											<string>3822B0F714FF650E0074CF9E</string>
-											<string>3822B0F914FF650E0074CF9E</string>
-											<string>3822B11D1501B5A80074CF9E</string>
 											<string>3822B11E1501B5A80074CF9E</string>
 											<string>3822B1371501C1A40074CF9E</string>
-											<string>3822B1381501C1A40074CF9E</string>
-											<string>3822B1451501C2050074CF9E</string>
-											<string>3822B1461501C2050074CF9E</string>
+											<string>3822B16E1530FA790074CF9E</string>
+											<string>3822B16F1530FA790074CF9E</string>
+											<string>3822B1701530FA790074CF9E</string>
+											<string>3822B1711530FA790074CF9E</string>
+											<string>3822B1721530FA790074CF9E</string>
+											<string>3822B1731530FA790074CF9E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -558,7 +558,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>3822B1481501C2050074CF9E</string>
 		<string>3822B10714FF650E0074CF9E</string>
 		<string>3822B10814FF650E0074CF9E</string>
 		<string>1C78EAAD065D492600B07095</string>
@@ -588,7 +587,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CD0528F0623707200166675</string>
 								<key>PBXProjectModuleLabel</key>
-								<string></string>
+								<string>GameScene.cpp</string>
 								<key>StatusBarVisibility</key>
 								<true/>
 							</dict>
@@ -605,6 +604,8 @@
 							<string>218pt</string>
 						</dict>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>

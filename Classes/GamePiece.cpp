@@ -61,6 +61,9 @@ void GamePiece::SetAllPositions(CCPoint ccpPosition)
 {
 	setPosition(ccpPosition);
 	m_ccpTop = ccp(getPosition().x, getPosition().y + 88);
+	m_ccpLowPosLerp = ccpPosition;
+	m_ccpHighPosLerp = ccpPosition;
+	m_ccpHighPosLerp.y += 50;
 }
 
 void GamePiece::update(ccTime dt)
@@ -84,6 +87,7 @@ void GamePiece::update(ccTime dt)
 						if(m_pGameLayer->GetGamePieces()[j] == m_gsCurrentSpot->GetAdjacentSpots()[i]->GetGamePiece())
 						{
 							m_pGameLayer->SetRemovingPiece(j);
+							m_pGameLayer->SetBoolRemovingPiece(true);
 							break;
 						}
 					}

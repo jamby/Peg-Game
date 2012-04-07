@@ -30,6 +30,9 @@ private:
 	CCPoint m_ccpTop;
 	float m_fRadius;
 	
+	CCPoint m_ccpLowPosLerp;
+	CCPoint m_ccpHighPosLerp;
+	
 	GameLayer* m_pGameLayer;
 
 	
@@ -58,6 +61,9 @@ public:
 	int GetZOrder(void) { return m_nZOrder; }
 	
 	void SetAllPositions(CCPoint ccpPosition);
+	
+	CCPoint GetLowPosLerp(void) { return m_ccpLowPosLerp; }
+	CCPoint GetHighPosLerp(void) { return m_ccpHighPosLerp; }
 };
 
 #endif // __GAMEPIECE_H_
