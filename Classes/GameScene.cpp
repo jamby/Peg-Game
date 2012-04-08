@@ -82,42 +82,24 @@ void GameLayer::onEnter()
 	bool bRet = false;
 	do
 	{
-		//////////////////////////////
-		// 1. super init first
-		//CC_BREAK_IF(!CCLayer::init());
-		
 		CCLayer::onEnter();
 		
-		/////////////////////////////
-		// 2. add a menu item with "X" image, which is clicked to quit the program
-		//    you may modify it.
+		m_pRefresh = CCMenuItemImage::itemFromNormalImage("refresh.png", "refreshchosen.png", this, menu_selector(GameLayer::SetSafeRestart));
+		m_pRefresh->setPosition(ccp(158, 32));
 		
-		// add a "close" icon to exit the progress. it's an autorelease object
-		//CCMenuItemImage *pCloseItem = CCMenuItemImage::itemFromNormalImage(
-		//										"CloseNormal.png",
-		//										"CloseSelected.png",
-		//										this,
-		//										menu_selector(HelloWorld::menuCloseCallback) );
-		//	pCloseItem->setPosition( ccp(CCDirector::sharedDirector()->getWinSize().width - 20, 20) );
-		
-		// create menu, it's an autorelease object
-		//CCMenu* pMenu = CCMenu::menuWithItems(pCloseItem, NULL);
-		//pMenu->setPosition( CCPointZero );
-		//this->addChild(pMenu, 1);
+		m_pMenu = CCMenu::menuWithItem(m_pRefresh);
+		m_pMenu->setPosition(CCPointZero);
+		this->addChild(m_pMenu, 1);
 		
 		// ask director the window size
 		CCSize size = CCDirector::sharedDirector()->getWinSize();
 		
 		m_Gameboard = new Gameboard();
-//		for(int i = 0; i < 14; i++)
-//			m_vGamePieces.push_back(new GamePiece(m_Gameboard->GetSpot(i)));
-		//ccDrawCircle(ccp(50, 50), 1.0f, 0.0f, 6, false);
 		
 		this->addChild(m_Gameboard);
 		
 		for(int i = 0; i < 6; i++)
 			this->addChild(m_Gameboard->GetBoardSprite(i), i*2);
-		//this->addChild(m_vGamePieces[0], m_vGamePieces[0]->GetCurrentSpot()->GetZOrder());
 		
 		m_gpSelectedPiece = NULL;
 		m_gsNewSpot = NULL;
@@ -200,6 +182,12 @@ void GameLayer::update(ccTime dt)
 			m_nRemovingPiece = -1;
 		}
 	}
+	
+	if(m_bSafeToRestart == true)
+	{
+		RestartGame();
+		m_bSafeToRestart = false;
+	}
 }
 
 void GameLayer::ccTouchesBegan(CCSet *pTouches, CCEvent *pEvent)
@@ -228,31 +216,6 @@ void GameLayer::ccTouchesMoved(CCSet *pTouches, CCEvent *pEvent)
 	
 	if(m_gpSelectedPiece != NULL)
 	{
-//		m_pSelectedPiece->setPosition(ccp(location.x, location.y - 88));
-//		
-//		for(int i = 0; i < m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots().size(); i++)
-//		{
-//			if(PointInCircle(m_pSelectedPiece->getPosition(), 
-//							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetCirclePoint(), 
-//							 m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i]->GetRadius()) == true)
-//			{
-//				// Need to change this to be from the selected piece's jump spots
-//				// However, more of this will have to do with the ending gameplay for this
-//				// Like this, the part of code that is commented below
-//				// The uncommented code would be the one that should be moved into the TouchesEnded function
-////				if(m_pSelectedPiece->GetCurrentSpot()->CheckConnectors(i) == true)
-////					m_pNewSpot = m_pSelectedPiece->GetCurrentSpot()->GetJumpSpots()[i];
-//				if(m_pSelectedPiece->GetCurrentSpot()->GetZOrder() != m_Gameboard->GetSpot(i)->GetZOrder())
-//				{
-//					m_pSelectedPiece->SetCurrentSpot(m_Gameboard->GetSpot(i));
-//					this->reorderChild(m_pSelectedPiece, m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-//					m_pSelectedPiece->SetZOrder(m_pSelectedPiece->GetCurrentSpot()->GetZOrder());
-//				}
-//			}
-//			else
-//				m_pNewSpot = NULL;
-//		}
-//		
 		m_gpSelectedPiece->SetAllPositions(ccp(location.x, location.y - 88));
 	}
 }
@@ -273,7 +236,7 @@ void GameLayer::ccTouchesEnded(CCSet *pTouches, CCEvent *pEvent)
 		m_gpSelectedPiece = NULL;
 	}
 }
-
+								
 void GameLayer::StartUpGame(CCPoint location)
 {
 	for(int i = 0; i < m_Gameboard->GetSpots().size(); i++)
@@ -298,4 +261,42 @@ void GameLayer::StartUpGame(CCPoint location)
 			this->addChild(m_vGamePieces[i], m_vGamePieces[i]->GetCurrentSpot()->GetZOrder());
 		}
 	}
+}
+
+void GameLayer::RestartGame(void)
+{
+	for(int i = 0; i < m_Gameboard->GetSpots().size(); i++)
+	{
+		m_Gameboard->GetSpots()[i]->SetGamePiece(NULL);
+	}
+	
+	for(int i = 0; i < m_vGamePieces.size(); i++)
+	{
+		m_vGamePieces[i]->SetCurrentSpot(NULL);
+		m_vGamePieces[i]->SetPreviousSpot(NULL);
+	}
+	
+	for(int i = 0; i < m_vUsedPieces.size(); i++)
+	{
+		m_vUsedPieces[i]->SetCurrentSpot(NULL);
+		m_vUsedPieces[i]->SetPreviousSpot(NULL);
+	}
+	
+	for(int i = m_vGamePieces.size()-1; i >= 0; i--)
+	{
+		this->removeChild(m_vGamePieces.back(), true);
+		GamePiece* pTempPiece = m_vGamePieces.back();
+		m_vGamePieces.pop_back();
+		delete pTempPiece;
+	}
+	
+	for(int i = m_vUsedPieces.size()-1; i >= 0; i--)
+	{
+		this->removeChild(m_vUsedPieces.back(), true);
+		GamePiece* pTempPiece = m_vUsedPieces.back();
+		m_vUsedPieces.pop_back();
+		delete pTempPiece;
+	}
+	
+	m_nEmptyStartingSpot = -1;
 }

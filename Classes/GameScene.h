@@ -25,10 +25,14 @@ private:
 	vector<GamePiece*> m_vUsedPieces;
 	GamePiece* m_gpSelectedPiece;
 	GameSpot* m_gsNewSpot;
+	
+	CCMenu* m_pMenu;
+	CCMenuItemImage* m_pRefresh;
+	
 	int m_nEmptyStartingSpot;
 	int m_nRemovingPiece;
-	
 	bool m_bRemovingPiece;
+	bool m_bSafeToRestart;
 	float m_fOpacityPer;
 	float m_fOpacityLerp;
 	float m_fYPer;
@@ -55,6 +59,8 @@ public:
 	void SetBoolRemovingPiece(bool bRemovingPiece) { m_bRemovingPiece = bRemovingPiece; }
 	
 	void StartUpGame(CCPoint location);
+	void RestartGame(void);
+	void SetSafeRestart(void) { m_bSafeToRestart = true; }
 	
 	// there's no 'id' in cpp, so we recommand to return the exactly class pointer
 	

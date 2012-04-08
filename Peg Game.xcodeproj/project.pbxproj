@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3822B180153158840074CF9E /* refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 3822B17E153158840074CF9E /* refresh.png */; };
+		3822B181153158840074CF9E /* refreshchosen.png in Resources */ = {isa = PBXBuildFile; fileRef = 3822B17F153158840074CF9E /* refreshchosen.png */; };
 		38610D3014FF3BD1008DEA06 /* FPGMath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38610D2F14FF3BD1008DEA06 /* FPGMath.cpp */; };
 		38C302E514EB1DEC00E24912 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38C302D914EB1DEC00E24912 /* AppDelegate.cpp */; };
 		38C302E614EB1DEC00E24912 /* Gameboard.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 38C302DB14EB1DEC00E24912 /* Gameboard.cpp */; };
@@ -314,6 +316,8 @@
 /* Begin PBXFileReference section */
 		1D6058910D05DD3D006BFB54 /* Peg Game.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Peg Game.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F3B9A820EF2151B00286867 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = SOURCE_ROOT; };
+		3822B17E153158840074CF9E /* refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refresh.png; sourceTree = "<group>"; };
+		3822B17F153158840074CF9E /* refreshchosen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = refreshchosen.png; sourceTree = "<group>"; };
 		38610D2F14FF3BD1008DEA06 /* FPGMath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FPGMath.cpp; sourceTree = "<group>"; };
 		38994E0514F30C8600EFB560 /* FPGMath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FPGMath.h; sourceTree = "<group>"; };
 		38C302D914EB1DEC00E24912 /* AppDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AppDelegate.cpp; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 		BF21A9A013E0F9D20067F790 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3822B17E153158840074CF9E /* refresh.png */,
+				3822B17F153158840074CF9E /* refreshchosen.png */,
 				38C302EB14EB1E0A00E24912 /* PegBlue.png */,
 				38C302EC14EB1E0A00E24912 /* Triangle01.png */,
 				38C302ED14EB1E0A00E24912 /* Triangle02.png */,
@@ -1465,6 +1471,8 @@
 				38C302F614EB1E0A00E24912 /* Triangle04.png in Resources */,
 				38C302F714EB1E0A00E24912 /* Triangle05.png in Resources */,
 				38C302F814EB1E0A00E24912 /* Triangle06.png in Resources */,
+				3822B180153158840074CF9E /* refresh.png in Resources */,
+				3822B181153158840074CF9E /* refreshchosen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
